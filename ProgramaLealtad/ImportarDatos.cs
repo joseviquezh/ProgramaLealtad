@@ -41,7 +41,7 @@ namespace ProgramaLealtad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            oFD.Filter = "Archivos de Excel|*.xls";
+            oFD.Filter = "Archivos .csv|*.csv";
             oFD.Title = "Seleccione el informe a importar";
 
             if (oFD.ShowDialog() == DialogResult.OK)

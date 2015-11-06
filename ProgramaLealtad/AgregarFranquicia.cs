@@ -68,5 +68,10 @@ namespace ProgramaLealtad
                 MessageBox.Show("Datos	vacio");
             }
         }
+
+        private void VentanaAgregarFranquicia_Load(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

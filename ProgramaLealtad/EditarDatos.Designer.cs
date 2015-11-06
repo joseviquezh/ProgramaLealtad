@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventanaEditarDatos));
             this.tabGeneral = new System.Windows.Forms.TabControl();
             this.tabDueno = new System.Windows.Forms.TabPage();
             this.botonAgregarDueno = new System.Windows.Forms.Button();
@@ -42,10 +43,6 @@
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
             this.botonAgregarRestaurante = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
-            this.RefrescarDueño = new System.Windows.Forms.Button();
-            this.RefrescarFranquicia = new System.Windows.Forms.Button();
-            this.RefrescarSubfranquicia = new System.Windows.Forms.Button();
-            this.RefrescarRestaurante = new System.Windows.Forms.Button();
             this.tabGeneral.SuspendLayout();
             this.tabDueno.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -73,7 +70,6 @@
             // 
             // tabDueno
             // 
-            this.tabDueno.Controls.Add(this.RefrescarDueño);
             this.tabDueno.Controls.Add(this.botonAgregarDueno);
             this.tabDueno.Controls.Add(this.dataGridView1);
             this.tabDueno.Location = new System.Drawing.Point(4, 27);
@@ -106,7 +102,6 @@
             // 
             // tabFranquicia
             // 
-            this.tabFranquicia.Controls.Add(this.RefrescarFranquicia);
             this.tabFranquicia.Controls.Add(this.dataGridView2);
             this.tabFranquicia.Controls.Add(this.botonAgregarFranquicia);
             this.tabFranquicia.Location = new System.Drawing.Point(4, 27);
@@ -124,6 +119,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(826, 509);
             this.dataGridView2.TabIndex = 3;
+            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick_1);
             // 
             // botonAgregarFranquicia
             // 
@@ -139,7 +135,6 @@
             // 
             // tabSubfranquicia
             // 
-            this.tabSubfranquicia.Controls.Add(this.RefrescarSubfranquicia);
             this.tabSubfranquicia.Controls.Add(this.dataGridView3);
             this.tabSubfranquicia.Controls.Add(this.botonSubfranqucia);
             this.tabSubfranquicia.Location = new System.Drawing.Point(4, 27);
@@ -173,7 +168,6 @@
             // 
             // tabRestaurante
             // 
-            this.tabRestaurante.Controls.Add(this.RefrescarRestaurante);
             this.tabRestaurante.Controls.Add(this.dataGridView4);
             this.tabRestaurante.Controls.Add(this.botonAgregarRestaurante);
             this.tabRestaurante.Location = new System.Drawing.Point(4, 27);
@@ -191,6 +185,7 @@
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.Size = new System.Drawing.Size(826, 509);
             this.dataGridView4.TabIndex = 5;
+            this.dataGridView4.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentClick);
             // 
             // botonAgregarRestaurante
             // 
@@ -207,9 +202,9 @@
             // 
             // botonVolver
             // 
-            this.botonVolver.BackColor = System.Drawing.Color.Crimson;
+            this.botonVolver.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.botonVolver.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonVolver.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.botonVolver.ForeColor = System.Drawing.Color.Black;
             this.botonVolver.Location = new System.Drawing.Point(12, 635);
             this.botonVolver.Name = "botonVolver";
             this.botonVolver.Size = new System.Drawing.Size(134, 32);
@@ -218,50 +213,6 @@
             this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
-            // RefrescarDueño
-            // 
-            this.RefrescarDueño.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.RefrescarDueño.Location = new System.Drawing.Point(6, 6);
-            this.RefrescarDueño.Name = "RefrescarDueño";
-            this.RefrescarDueño.Size = new System.Drawing.Size(93, 31);
-            this.RefrescarDueño.TabIndex = 2;
-            this.RefrescarDueño.Text = "Refrescar";
-            this.RefrescarDueño.UseVisualStyleBackColor = false;
-            this.RefrescarDueño.Click += new System.EventHandler(this.Refrescar_Click);
-            // 
-            // RefrescarFranquicia
-            // 
-            this.RefrescarFranquicia.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.RefrescarFranquicia.Location = new System.Drawing.Point(6, 6);
-            this.RefrescarFranquicia.Name = "RefrescarFranquicia";
-            this.RefrescarFranquicia.Size = new System.Drawing.Size(93, 31);
-            this.RefrescarFranquicia.TabIndex = 4;
-            this.RefrescarFranquicia.Text = "Refrescar";
-            this.RefrescarFranquicia.UseVisualStyleBackColor = false;
-            this.RefrescarFranquicia.Click += new System.EventHandler(this.RefrescarFranquicia_Click);
-            // 
-            // RefrescarSubfranquicia
-            // 
-            this.RefrescarSubfranquicia.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.RefrescarSubfranquicia.Location = new System.Drawing.Point(6, 6);
-            this.RefrescarSubfranquicia.Name = "RefrescarSubfranquicia";
-            this.RefrescarSubfranquicia.Size = new System.Drawing.Size(93, 31);
-            this.RefrescarSubfranquicia.TabIndex = 5;
-            this.RefrescarSubfranquicia.Text = "Refrescar";
-            this.RefrescarSubfranquicia.UseVisualStyleBackColor = false;
-            this.RefrescarSubfranquicia.Click += new System.EventHandler(this.RefrescarSubfranquicia_Click);
-            // 
-            // RefrescarRestaurante
-            // 
-            this.RefrescarRestaurante.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.RefrescarRestaurante.Location = new System.Drawing.Point(6, 6);
-            this.RefrescarRestaurante.Name = "RefrescarRestaurante";
-            this.RefrescarRestaurante.Size = new System.Drawing.Size(93, 31);
-            this.RefrescarRestaurante.TabIndex = 6;
-            this.RefrescarRestaurante.Text = "Refrescar";
-            this.RefrescarRestaurante.UseVisualStyleBackColor = false;
-            this.RefrescarRestaurante.Click += new System.EventHandler(this.RefrescarRestaurante_Click);
-            // 
             // ventanaEditarDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -269,6 +220,7 @@
             this.ClientSize = new System.Drawing.Size(896, 674);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.tabGeneral);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ventanaEditarDatos";
             this.Text = "Edición de Datos";
@@ -289,7 +241,7 @@
 
         private System.Windows.Forms.TabControl tabGeneral;
         private System.Windows.Forms.TabPage tabDueno;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        public System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabFranquicia;
         private System.Windows.Forms.TabPage tabSubfranquicia;
         private System.Windows.Forms.TabPage tabRestaurante;
@@ -298,12 +250,8 @@
         private System.Windows.Forms.Button botonAgregarFranquicia;
         private System.Windows.Forms.Button botonSubfranqucia;
         private System.Windows.Forms.Button botonAgregarRestaurante;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.Button RefrescarDueño;
-        private System.Windows.Forms.Button RefrescarFranquicia;
-        private System.Windows.Forms.Button RefrescarSubfranquicia;
-        private System.Windows.Forms.Button RefrescarRestaurante;
+        public System.Windows.Forms.DataGridView dataGridView2;
+        public System.Windows.Forms.DataGridView dataGridView3;
+        public System.Windows.Forms.DataGridView dataGridView4;
     }
 }

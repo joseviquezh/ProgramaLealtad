@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VentanaAgregarSubfranquicia));
             this.textBoxNumero = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -92,9 +93,10 @@
             // Cancelar
             // 
             this.Cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Cancelar.BackColor = System.Drawing.Color.Crimson;
+            this.Cancelar.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Cancelar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancelar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.Cancelar.ForeColor = System.Drawing.Color.Black;
+            this.Cancelar.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.Cancelar.Location = new System.Drawing.Point(12, 202);
             this.Cancelar.Name = "Cancelar";
             this.Cancelar.Size = new System.Drawing.Size(104, 32);
@@ -134,6 +136,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxFranquicia);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "VentanaAgregarSubfranquicia";
             this.Text = "Agregar Subfranquicia";

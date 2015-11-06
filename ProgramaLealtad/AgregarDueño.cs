@@ -15,6 +15,7 @@ namespace ProgramaLealtad
 {
     public partial class ventanaAgregarDueño : Form
     {
+        ventanaEditarDatos vED;
         public ventanaAgregarDueño()
         {
             InitializeComponent();

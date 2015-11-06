@@ -19,17 +19,11 @@ namespace ProgramaLealtad
         {
             InitializeComponent();
             llenarTabla("Select * From Dueno", dataGridView1);
-            //llenarTabla("Select NumeroF as 'Numero', NombreF as 'Nombre' From Franquicia", dataGridView2);
+            llenarTabla("Select NumeroF as 'Numero', NombreF as 'Nombre' From Franquicia", dataGridView2);
             llenarTabla("Select NumeroSF as 'Numero', NombreSF as 'Nombre', NombreF as 'Nombre de Franquicia' From SubFranquicia", dataGridView3);
             llenarTabla("Select Nombre, Telefono, NombreF as 'Nombre de Franquicia', NombreSF as 'Nombre de Subfranquicia' From Restaurante", dataGridView4);
         }
-
-        private void botonAgregarDueno_Click(object sender, EventArgs e)
-        {
-            ventanaAgregarDueño vAD = new ventanaAgregarDueño();
-            vAD.Show();
-        }
-
+        
         private void botonVolver_Click(object sender, EventArgs e)
         {
             ventanaPrincipal vP = new ventanaPrincipal();
@@ -42,22 +36,32 @@ namespace ProgramaLealtad
 
         }
 
-        private void botonSubfranqucia_Click(object sender, EventArgs e)
+        private void botonAgregarDueno_Click(object sender, EventArgs e)
         {
-            VentanaAgregarSubfranquicia vAS = new VentanaAgregarSubfranquicia();
-            vAS.Show();
-        }
-
-        private void botonAgregarRestaurante_Click(object sender, EventArgs e)
-        {
-            VentanaAgregarRestaurante vAR = new VentanaAgregarRestaurante();
-            vAR.Show();
+            ventanaAgregarDueño vAD = new ventanaAgregarDueño();
+            vAD.ShowDialog();
+            llenarTabla("Select * From Dueno", dataGridView1);
         }
 
         private void botonAgregarFranquicia_Click(object sender, EventArgs e)
         {
             VentanaAgregarFranquicia vAF = new VentanaAgregarFranquicia();
-            vAF.Show();
+            vAF.ShowDialog();
+            llenarTabla("Select NumeroF as 'Numero', NombreF as 'Nombre' From Franquicia", dataGridView2);
+        }
+
+        private void botonSubfranqucia_Click(object sender, EventArgs e)
+        {
+            VentanaAgregarSubfranquicia vAS = new VentanaAgregarSubfranquicia();
+            vAS.ShowDialog();
+            llenarTabla("Select NumeroSF as 'Numero', NombreSF as 'Nombre', NombreF as 'Nombre de Franquicia' From SubFranquicia", dataGridView3);
+        }
+
+        private void botonAgregarRestaurante_Click(object sender, EventArgs e)
+        {
+            VentanaAgregarRestaurante vAR = new VentanaAgregarRestaurante();
+            vAR.ShowDialog();
+            llenarTabla("Select Nombre, Telefono, NombreF as 'Nombre de Franquicia', NombreSF as 'Nombre de Subfranquicia' From Restaurante", dataGridView4);
         }
 
         private	void llenarTabla(String	consulta, DataGridView dataGridView)
@@ -71,7 +75,7 @@ namespace ProgramaLealtad
                 bindingSource.DataSource = tabla;
                 dataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
                 dataGridView.DataSource = bindingSource;
-                for	(int i = 0; i < dataGridView1.ColumnCount; i++)
+                for	(int i = 0; i < dataGridView.ColumnCount; i++)
                 {
 	                dataGridView.Columns[i].Width = 250;
                 }
@@ -83,24 +87,14 @@ namespace ProgramaLealtad
             }
         }
 
-        private void Refrescar_Click(object sender, EventArgs e)
+        private void dataGridView4_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            llenarTabla("Select * From Dueno", dataGridView1);
+            
         }
 
-        private void RefrescarFranquicia_Click(object sender, EventArgs e)
+        private void dataGridView2_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            llenarTabla("Select NumeroF as 'Numero', NombreF as 'Nombre' From Franquicia", dataGridView2);
-        }
 
-        private void RefrescarSubfranquicia_Click(object sender, EventArgs e)
-        {
-            llenarTabla("Select NumeroSF as 'Numero', NombreSF as 'Nombre', NombreF as 'Nombre de Franquicia' From SubFranquicia", dataGridView3);
-        }
-
-        private void RefrescarRestaurante_Click(object sender, EventArgs e)
-        {
-            llenarTabla("Select Nombre, Telefono, NombreF as 'Nombre de Franquicia', NombreSF as 'Nombre de Subfranquicia' From Restaurante", dataGridView4);
         }
     }
 }

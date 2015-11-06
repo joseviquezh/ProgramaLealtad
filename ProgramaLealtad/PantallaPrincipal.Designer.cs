@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventanaPrincipal));
             this.botonImportar = new System.Windows.Forms.Button();
             this.botonEditar = new System.Windows.Forms.Button();
             this.botonConsulta = new System.Windows.Forms.Button();
@@ -94,12 +95,12 @@
             // 
             // botonSalirPrincipal
             // 
-            this.botonSalirPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.botonSalirPrincipal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.botonSalirPrincipal.AutoSize = true;
-            this.botonSalirPrincipal.BackColor = System.Drawing.Color.Crimson;
-            this.botonSalirPrincipal.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.botonSalirPrincipal.ForeColor = System.Drawing.SystemColors.Window;
-            this.botonSalirPrincipal.Location = new System.Drawing.Point(595, 425);
+            this.botonSalirPrincipal.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.botonSalirPrincipal.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.botonSalirPrincipal.ForeColor = System.Drawing.Color.Black;
+            this.botonSalirPrincipal.Location = new System.Drawing.Point(12, 425);
             this.botonSalirPrincipal.Name = "botonSalirPrincipal";
             this.botonSalirPrincipal.Size = new System.Drawing.Size(127, 35);
             this.botonSalirPrincipal.TabIndex = 4;
@@ -111,7 +112,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(734, 472);
             this.Controls.Add(this.botonSalirPrincipal);
@@ -119,6 +119,7 @@
             this.Controls.Add(this.botonConsulta);
             this.Controls.Add(this.botonEditar);
             this.Controls.Add(this.botonImportar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ventanaPrincipal";
             this.Text = "Programa de Lealtad";

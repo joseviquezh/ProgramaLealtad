@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ventanaImportarDatos));
             this.botonVolver = new System.Windows.Forms.Button();
             this.Importar = new System.Windows.Forms.Button();
             this.Cancelar = new System.Windows.Forms.Button();
@@ -65,9 +66,9 @@
             // Cancelar
             // 
             this.Cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Cancelar.BackColor = System.Drawing.Color.Crimson;
+            this.Cancelar.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Cancelar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancelar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.Cancelar.ForeColor = System.Drawing.Color.Black;
             this.Cancelar.Location = new System.Drawing.Point(12, 83);
             this.Cancelar.Name = "Cancelar";
             this.Cancelar.Size = new System.Drawing.Size(88, 32);
@@ -107,6 +108,7 @@
             this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.Importar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ventanaImportarDatos";
             this.Text = "Importar Datos";

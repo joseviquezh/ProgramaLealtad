@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GenerarReporte));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonUbicarInforme = new System.Windows.Forms.Button();
             this.Cancelar = new System.Windows.Forms.Button();
@@ -37,7 +38,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(12, 34);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(354, 22);
@@ -61,9 +62,9 @@
             // Cancelar
             // 
             this.Cancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Cancelar.BackColor = System.Drawing.Color.Crimson;
+            this.Cancelar.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.Cancelar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancelar.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.Cancelar.ForeColor = System.Drawing.Color.Black;
             this.Cancelar.Location = new System.Drawing.Point(12, 80);
             this.Cancelar.Name = "Cancelar";
             this.Cancelar.Size = new System.Drawing.Size(88, 32);
@@ -89,10 +90,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(8, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 20);
+            this.label1.Size = new System.Drawing.Size(288, 20);
             this.label1.TabIndex = 33;
             this.label1.Text = "Dirección donde se guardará el reporte:";
             // 
@@ -106,6 +107,7 @@
             this.Controls.Add(this.buttonUbicarInforme);
             this.Controls.Add(this.Cancelar);
             this.Controls.Add(this.Exportar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "GenerarReporte";
             this.Text = "GenerarReporte";
             this.ResumeLayout(false);
