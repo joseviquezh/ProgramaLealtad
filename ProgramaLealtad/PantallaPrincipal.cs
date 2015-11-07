@@ -39,7 +39,7 @@ namespace ProgramaLealtad
         private void botonImportar_Click(object sender, EventArgs e)
         {
             ventanaImportarDatos vID = new ventanaImportarDatos();
-            vID.Show();
+            vID.ShowDialog();
             
         }
 

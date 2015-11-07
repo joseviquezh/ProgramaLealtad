@@ -46,7 +46,7 @@ namespace ProgramaLealtad
         private void button1_Click(object sender, EventArgs e)
         {
             GenerarReporte gR = new GenerarReporte();
-            gR.Show();
+            gR.ShowDialog();
         }
 
         private void llenarComboBox(string consulta, ComboBox comboBox)
