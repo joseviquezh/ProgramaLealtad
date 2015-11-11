@@ -13,3 +13,4 @@ C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\Debug\Progra
 C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\Debug\ProgramaLealtad.csproj.GenerateResource.Cache
 C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\Debug\ProgramaLealtad.exe
 C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\Debug\ProgramaLealtad.pdb
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\Debug\ProgramaLealtad.csprojResolveAssemblyReference.cache

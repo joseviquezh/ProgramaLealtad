@@ -40,9 +40,9 @@ namespace ProgramaLealtad
 
             // using (OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\luis diego\\Desktop\\Bases I\\BD.xlsx;Extended Properties=\Excel 12.0"/* Xml; HDR = YES; IMEX = 1; TypeGuessRows = 0; ImportMixedTypes = Text*/))
 
-            using (OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + "C:\\Users\\luis diego\\Desktop\\Bases I\\BD.xlsx" + ";Extended Properties=\"Excel 12.0 Xml;HDR=YES;IMEX=1\";"))
+            using (OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + "C:\\Users\\luis diego\\Desktop\\Bases I\\BD_1.xlsx" + ";Extended Properties=\"Excel 12.0 Xml;HDR=YES;IMEX=1\";"))
 
-            using (OleDbCommand command = new OleDbCommand("Select * from [Sheet1$] ", connection))
+            using (OleDbCommand command = new OleDbCommand("Select * from [BD$] ", connection))
 
             using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
             {
@@ -52,7 +52,10 @@ namespace ProgramaLealtad
 
             for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
             {
-                MessageBox.Show(ds.Tables[0].Rows[i].ItemArray[i].ToString());
+
+                for (int j = 0; j <= 18; j++) {
+                    MessageBox.Show(ds.Tables[0].Rows[i].ItemArray[j].ToString());
+                }
             }
 
             this.Close();
