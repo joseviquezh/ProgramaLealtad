@@ -10,3 +10,8 @@ La interfaz:
 -Abre explorador de archivos para abrir y guardar archivos .xls (exlusivamente)  
 -Las ventanas tienen tamaño   
 -Hay un boton para refrescar la información de "Editar Datos"  
+
+
+https://www.microsoft.com/en-us/download/confirmation.aspx?id=23734
+
+modificar a x86 plataforma de soluciones

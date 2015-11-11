@@ -44,3 +44,21 @@ C:\Users\jxzev\Google Drive\U\Cómputo\Bases de Datos\Proyecto\ProgramaLealtad\P
 C:\Users\jxzev\Google Drive\U\Cómputo\Bases de Datos\Proyecto\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.Properties.Resources.resources
 C:\Users\jxzev\Google Drive\U\Cómputo\Bases de Datos\Proyecto\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.csproj.GenerateResource.Cache
 C:\Users\jxzev\Google Drive\U\Cómputo\Bases de Datos\Proyecto\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.GenerarReporte.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.exe
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.pdb
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\bin\Debug\ProgramaLealtad.exe
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\bin\Debug\ProgramaLealtad.pdb
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\bin\Debug\ProgramaLealtad.exe.CodeAnalysisLog.xml
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\bin\Debug\ProgramaLealtad.exe.lastcodeanalysissucceeded
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.csprojResolveAssemblyReference.cache
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.GenerarReporte.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaPrincipal.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaConsultarDatos.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaEditarDatos.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.VentanaAgregarRestaurante.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.VentanaAgregarSubfranquicia.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaAgregarDueño.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaImportarDatos.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.VentanaAgregarFranquicia.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.Properties.Resources.resources
+C:\Users\luis diego\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.csproj.GenerateResource.Cache
