@@ -1,4 +1,18 @@
-Use "ProgramaDeLealtad";
+Use DB_Grupo5;
+
+/*
+Drop table Dueno
+drop table Franquicia
+drop table SubFranquicia
+drop table Restaurante
+drop table Transacciones
+drop table TransaccionesDeClientesDeLealtad
+drop table TransaccionesDeClientesNormales
+drop table PerteneceF
+drop table PerteneceSF
+drop table datosDeRestaurante
+*/
+
 
 
 create table Dueno (
@@ -35,23 +49,34 @@ create table Restaurante (
 
 Nombre varchar(30),
 Telefono varchar(20),
+NombreF		varchar(30),
+NombreSF	varchar(30) null,
+
+primary key (Nombre),
+foreign key (NombreF) references Franquicia(NombreF),
+foreign key (NombreSF) references SubFranquicia(NombreSF) on delete set default
+
+)
+
+create table datosDeRestaurante (
+
+Mes varchar(3),
+Anno int,
 ClientesQueVuelven int,
 PorcentajeNuevosClientes int,
 NuveosClientes int,
 ClientesQueVuelvenDespuesDeLaPrimeraCompra int,
-NombreF		varchar(30),
-NombreSF	varchar(30),
+NombreRestaurante varchar(30),
 
-primary key (Nombre),
-foreign key (NombreF) references Franquicia(NombreF),
-foreign key (NombreSF) references SubFranquicia(NombreSF)
+Primary key(NombreRestaurante,Mes, Anno),
+Foreign Key (NombreRestaurante) references Restaurante(Nombre)
 
 )
 
 create table Transacciones (
 
 Ano int,
-Mes int,
+Mes varchar(3),
 Cantidad int,
 Monto int,
 Nombre varchar(30),
@@ -64,7 +89,7 @@ foreign key (Nombre) references Restaurante(Nombre),
 create table TransaccionesDeClientesNormales (
 
 Ano int,
-Mes int, 
+Mes varchar(3), 
 
 primary key (Ano, Mes),
 foreign key (Ano, Mes) references Transacciones (Ano, Mes)
@@ -73,7 +98,7 @@ foreign key (Ano, Mes) references Transacciones (Ano, Mes)
 create table TransaccionesDeClientesDeLealtad (
 
 Ano int,
-Mes int, 
+Mes varchar(3), 
 CantidadDeTransaccionesClientesDeLealtad int,
 MontoDeClientesDeLealtad int,
 

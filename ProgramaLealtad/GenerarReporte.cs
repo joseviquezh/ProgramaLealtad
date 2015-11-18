@@ -31,7 +31,7 @@ namespace ProgramaLealtad
 
         private void buttonUbicarInforme_Click(object sender, EventArgs e)
         {
-            sFD.Filter = "Archivos .csv|*.csv";
+            sFD.Filter = "Archivo de excel|*.xls";
             sFD.Title = "Seleccione el informe a importar";
             sFD.ShowDialog();
 

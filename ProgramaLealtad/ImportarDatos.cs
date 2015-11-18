@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.OleDb;
 
 namespace ProgramaLealtad
 {
@@ -35,29 +34,6 @@ namespace ProgramaLealtad
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            DataSet ds = new DataSet();
-
-            // using (OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\luis diego\\Desktop\\Bases I\\BD.xlsx;Extended Properties=\Excel 12.0"/* Xml; HDR = YES; IMEX = 1; TypeGuessRows = 0; ImportMixedTypes = Text*/))
-
-            using (OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + "C:\\Users\\luis diego\\Desktop\\Bases I\\BD_1.xlsx" + ";Extended Properties=\"Excel 12.0 Xml;HDR=YES;IMEX=1\";"))
-
-            using (OleDbCommand command = new OleDbCommand("Select * from [BD$] ", connection))
-
-            using (OleDbDataAdapter adapter = new OleDbDataAdapter(command))
-            {
-                adapter.Fill(ds);
-            }
-
-
-            for (int i = 0; i <= ds.Tables[0].Rows.Count - 1; i++)
-            {
-
-                for (int j = 0; j <= 18; j++) {
-                    MessageBox.Show(ds.Tables[0].Rows[i].ItemArray[j].ToString());
-                }
-            }
-
             this.Close();
         }
 
@@ -65,7 +41,7 @@ namespace ProgramaLealtad
 
         private void button1_Click(object sender, EventArgs e)
         {
-            oFD.Filter = "Archivos .csv|*.csv";
+            oFD.Filter = "Archivos de Excel|*.xls";
             oFD.Title = "Seleccione el informe a importar";
 
             if (oFD.ShowDialog() == DialogResult.OK)
