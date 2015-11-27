@@ -1,4 +1,5 @@
-Use DB_Grupo5;
+--Use DB_Grupo5;
+Use ProgramaDeLealtad;
 
 /*
 Drop table Dueno
@@ -11,8 +12,11 @@ drop table TransaccionesDeClientesNormales
 drop table PerteneceF
 drop table PerteneceSF
 drop table datosDeRestaurante
+drop procedure CalculaDerivados
+drop trigger Recalcula1
+drop trigger Recalcula2
+drop trigger Recalcula3
 */
-
 
 
 create table Dueno (
@@ -63,7 +67,7 @@ create table datosDeRestaurante (
 Mes varchar(3),
 Anno int,
 ClientesQueVuelven int,
-PorcentajeNuevosClientes int,
+PorcentajeNuevosClientes float,
 NuveosClientes int,
 ClientesQueVuelvenDespuesDeLaPrimeraCompra int,
 NombreRestaurante varchar(30),
@@ -150,3 +154,63 @@ as
 		   (@chequeoLealtad - (@montoTN / @cantidadTN))/(@montoTN / @cantidadTN) as '%Lift'
 	from Transacciones T, TransaccionesDeClientesDeLealtad TL
 	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano  and Nombre = @Restaruante
+
+go
+create trigger Recalcula1
+on TransaccionesDeClientesDeLealtad after update
+as
+declare @Mes int, @Año int, @Nombre varchar(30)
+declare cursor1 cursor for
+	select Mes, Ano
+	from inserted
+	where Ano > 0 and Mes > 0
+open cursor1
+fetch next from cursor1 into @Mes, @Año
+while @@FETCH_STATUS = 0 begin
+	Exec CalculaDerivados @Mes,@Año,@Nombre --Ejecuta la consulta que calcula los derivados
+	fetch next from cursor1 into @Mes, @Año
+end
+close cursor1
+deallocate cursor1
+
+go
+create trigger Recalcula2
+on Transacciones after update
+as
+declare @Mes int, @Año int, @Nombre varchar(30)
+declare cursor1 cursor for
+	select Mes, Ano, Nombre
+	from inserted
+	where Ano > 0 and Mes > 0 and Nombre != null
+open cursor1
+fetch next from cursor1 into @Mes, @Año, @Nombre
+while @@FETCH_STATUS = 0 begin
+	Exec CalculaDerivados @Mes,@Año,@Nombre --Ejecuta la consulta que calcula los derivados
+	fetch next from cursor1 into @Mes, @Año, @Nombre
+end
+close cursor1
+deallocate cursor1
+
+go
+create trigger Recalcula3
+on datosDeRestaurante after update
+as
+declare @Mes int, @Año int, @Nombre varchar(30)
+declare cursor1 cursor for
+	select Mes, Anno, NombreRestaurante
+	from inserted
+	where Anno > 0 and Mes > 0 and NombreRestaurante != null
+open cursor1
+fetch next from cursor1 into @Mes, @Año, @Nombre
+while @@FETCH_STATUS = 0 begin
+	Exec CalculaDerivados @Mes,@Año,@Nombre --Ejecuta la consulta que calcula los derivados
+	fetch next from cursor1 into @Mes, @Año, @Nombre
+end
+close cursor1
+deallocate cursor1
+
+/*
+	Transacciones de lealtad
+	deberia jalar a que
+	restaurante pertenecen
+*/
