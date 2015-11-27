@@ -128,3 +128,25 @@ foreign key (NombreSF) references SubFranquicia(NombreSF),
 foreign key (Cedula) references Dueno (Cedula)
 
 )
+
+go
+Create Procedure CalculaDerivados
+	@Mes int, @Ano int, @Restaruante varchar(30)
+as
+	declare @chequeoLealtad float,
+	@cantidadTN float,
+	@montoTN float
+
+	select @cantidadTN = T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad,
+		   @montoTN = T.Monto - TL.MontoDeClientesDeLealtad,
+		   @chequeoLealtad = cast(TL.MontoDeClientesDeLealtad as decimal) / TL.CantidadDeTransaccionesClientesDeLealtad
+	from Transacciones T, TransaccionesDeClientesDeLealtad TL
+	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano and Nombre = @Restaruante
+
+	select T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad as 'Cantidad Transacciones Normales',
+		   T.Monto - TL.MontoDeClientesDeLealtad as 'Monto Transacciones Normales',
+		   cast(TL.MontoDeClientesDeLealtad as decimal) / TL.CantidadDeTransaccionesClientesDeLealtad as 'Chequeo Lealtad',
+		   @montoTN / @cantidadTN  as 'Chequeo Normal',
+		   (@chequeoLealtad - (@montoTN / @cantidadTN))/(@montoTN / @cantidadTN) as '%Lift'
+	from Transacciones T, TransaccionesDeClientesDeLealtad TL
+	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano  and Nombre = @Restaruante

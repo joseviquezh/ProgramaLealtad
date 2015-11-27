@@ -17,8 +17,8 @@ namespace ProgramaLealtad
     class AccesoBaseDatos
     {
         /*En Initial Catalog se agrega la base de datos propia. Intregated Security es para utilizar Windows Authentication*/
-        //String conexion = "Data Source=10.1.4.55; Initial Catalog= DB_Grupo5; Integrated Security=SSPI";
-        String conexion = "Data Source=DESKTOP-JOSE; Initial Catalog= ProgramaDeLealtad; Integrated Security=SSPI";    // Base de datos en mi compu
+        String conexion = "Data Source=10.1.4.55; Initial Catalog= DB_Grupo5; Integrated Security=SSPI";
+        //String conexion = "Data Source=DESKTOP-JOSE; Initial Catalog= ProgramaDeLealtad; Integrated Security=SSPI";    // Base de datos en mi compu
         /**
          * Constructor
          */

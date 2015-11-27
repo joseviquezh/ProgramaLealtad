@@ -45,3 +45,19 @@ C:\Users\jxzev\Google Drive\U\Cómputo\Bases de Datos\Proyecto\ProgramaLealtad\P
 C:\Users\jxzev\Google Drive\U\Cómputo\Bases de Datos\Proyecto\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.csproj.GenerateResource.Cache
 C:\Users\jxzev\Google Drive\U\Cómputo\Bases de Datos\Proyecto\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.GenerarReporte.resources
 C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\Debug\ProgramaLealtad.GenerarReporte.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.exe
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.pdb
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.csprojResolveAssemblyReference.cache
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\bin\Debug\ProgramaLealtad.exe
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\bin\Debug\ProgramaLealtad.pdb
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.GenerarReporte.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaPrincipal.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaConsultarDatos.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaEditarDatos.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.VentanaAgregarRestaurante.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.VentanaAgregarSubfranquicia.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaAgregarDueño.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.ventanaImportarDatos.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.VentanaAgregarFranquicia.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.Properties.Resources.resources
+C:\Users\b37638\Desktop\ProgramaLealtad-master\ProgramaLealtad\obj\Debug\ProgramaLealtad.csproj.GenerateResource.Cache
