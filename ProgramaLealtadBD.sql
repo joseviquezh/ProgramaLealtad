@@ -94,9 +94,11 @@ create table TransaccionesDeClientesNormales (
 
 Ano int,
 Mes varchar(3), 
+Nombre varchar(30),
 
 primary key (Ano, Mes),
-foreign key (Ano, Mes) references Transacciones (Ano, Mes)
+foreign key (Ano, Mes) references Transacciones (Ano, Mes),
+foreign key (Nombre) references Restaurante(Nombre),
 )
 
 create table TransaccionesDeClientesDeLealtad (
@@ -105,11 +107,11 @@ Ano int,
 Mes varchar(3), 
 CantidadDeTransaccionesClientesDeLealtad int,
 MontoDeClientesDeLealtad int,
-
+Nombre varchar(30),
 
 primary key (Ano, Mes),
-foreign key (Ano, Mes) references Transacciones (Ano, Mes)
-
+foreign key (Ano, Mes) references Transacciones (Ano, Mes),
+foreign key (Nombre) references Restaurante(Nombre),
 )
 
 create table PerteneceF (
@@ -161,14 +163,14 @@ on TransaccionesDeClientesDeLealtad after update
 as
 declare @Mes int, @Año int, @Nombre varchar(30)
 declare cursor1 cursor for
-	select Mes, Ano
+	select Mes, Ano, Nombre
 	from inserted
 	where Ano > 0 and Mes > 0
 open cursor1
-fetch next from cursor1 into @Mes, @Año
+fetch next from cursor1 into @Mes, @Año, @Nombre
 while @@FETCH_STATUS = 0 begin
 	Exec CalculaDerivados @Mes,@Año,@Nombre --Ejecuta la consulta que calcula los derivados
-	fetch next from cursor1 into @Mes, @Año
+	fetch next from cursor1 into @Mes, @Año, @Nombre
 end
 close cursor1
 deallocate cursor1
@@ -209,8 +211,20 @@ end
 close cursor1
 deallocate cursor1
 
-/*
-	Transacciones de lealtad
-	deberia jalar a que
-	restaurante pertenecen
-*/
+go
+create trigger Recalcula4
+on TransaccionesDeClientesNormales after update
+as
+declare @Mes int, @Año int, @Nombre varchar(30)
+declare cursor1 cursor for
+	select Mes, Ano, Nombre
+	from inserted
+	where Ano > 0 and Mes > 0 and Nombre != null
+open cursor1
+fetch next from cursor1 into @Mes, @Año, @Nombre
+while @@FETCH_STATUS = 0 begin
+	Exec CalculaDerivados @Mes,@Año,@Nombre --Ejecuta la consulta que calcula los derivados
+	fetch next from cursor1 into @Mes, @Año, @Nombre
+end
+close cursor1
+deallocate cursor1
