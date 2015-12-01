@@ -140,5 +140,30 @@ namespace ProgramaLealtad
             llenarTabla("select NombreRestaurante as 'Nombre de Restaurante',Telefono, ClientesQueVuelven as 'Clientes que Vuelven', PorcentajeNuevosClientes as 'Porcentaje de Nuevos Clientes', ClientesQueVuelvenDespuesDeLaPrimeraCompra as 'Clientes que vuelven después de la primera compra', NuveosClientes as 'Nuevos clientes'  from Restaurante join datosDeRestaurante on Nombre = NombreRestaurante where Nombre = '" + (string)comboBox2.SelectedItem + "' and Anno =" + (int)comboBox3.SelectedItem + " and Mes = '" + (string)comboBox4.SelectedItem + "'", dataGridView2);
             llenarTabla("Exec CalculaDerivados " + Convert.ToInt32(comboBox4.SelectedItem ) + "," + Convert.ToInt32(comboBox3.SelectedItem) + ", '" + (string)comboBox2.SelectedItem + "'", dataGridView3);        
         }
+
+        private void Actualizar_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                for (int i = 0; i < dataGridView2.RowCount - 1; ++i)
+                {
+                    Variables.baseDatos.ejecutarConsulta("update datosDeRestaurante set ClientesQueVuelven = " + Convert.ToInt32(dataGridView2.Rows[i].Cells[2].Value) + ", PorcentajeNuevosClientes = " + Convert.ToInt32(dataGridView2.Rows[i].Cells[3].Value) + ", ClientesQueVuelvenDespuesDeLaPrimeraCompra = " + Convert.ToInt32(dataGridView2.Rows[i].Cells[4].Value) + ", NuveosClientes = " + Convert.ToInt32(dataGridView2.Rows[i].Cells[5].Value) + " where NombreRestaurante = '" + (string)comboBox2.SelectedItem + "' and Anno = " + Convert.ToInt32(comboBox3.SelectedItem) + " and Mes = " + Convert.ToInt32(comboBox4.SelectedItem));
+                }
+
+                for (int i = 0; i < dataGridView3.RowCount -1; ++i)
+                {
+                    Variables.baseDatos.ejecutarConsulta("update Transacciones set Cantidad = " + Convert.ToInt32(dataGridView3.Rows[i].Cells[0].Value) + ", Monto = " + Convert.ToInt32(dataGridView3.Rows[i].Cells[1].Value) + " where Nombre = '" + (string)comboBox2.SelectedItem + "' and Ano = " + Convert.ToInt32(comboBox3.SelectedItem) + " and Mes = " + Convert.ToInt32(comboBox4.SelectedItem));
+                    Variables.baseDatos.ejecutarConsulta("update TransaccionesDeClientesDeLealtad set CantidadDeTransaccionesClientesDeLealtad = " + Convert.ToInt32(dataGridView3.Rows[i].Cells[2].Value) + ", MontoDeClientesDeLealtad = " + Convert.ToInt32(dataGridView3.Rows[i].Cells[3].Value) + " where Nombre = '" + (string)comboBox2.SelectedItem + "' and Ano = " + Convert.ToInt32(comboBox3.SelectedItem) + " and Mes = " + Convert.ToInt32(comboBox4.SelectedItem));
+                    llenarTabla("Exec CalculaDerivados " + Convert.ToInt32(comboBox4.SelectedItem) + "," + Convert.ToInt32(comboBox3.SelectedItem) + ", '" + (string)comboBox2.SelectedItem + "'", dataGridView3);                
+                }
+                MessageBox.Show("Datos Actulizados Correctamente");
+            }
+            catch (SqlException ex)
+            {
+                string mensajeError = ex.ToString();
+                MessageBox.Show(mensajeError);
+            }
+        }
     }
 }

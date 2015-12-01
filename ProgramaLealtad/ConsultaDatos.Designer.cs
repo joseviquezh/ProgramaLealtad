@@ -45,6 +45,7 @@
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.botonVolver = new System.Windows.Forms.Button();
+            this.Actualizar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -140,7 +141,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(42, 98);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(827, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(839, 150);
             this.dataGridView1.TabIndex = 8;
             // 
             // dataGridView2
@@ -149,7 +150,7 @@
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Location = new System.Drawing.Point(42, 282);
             this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(827, 150);
+            this.dataGridView2.Size = new System.Drawing.Size(839, 150);
             this.dataGridView2.TabIndex = 9;
             // 
             // label5
@@ -192,7 +193,7 @@
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Location = new System.Drawing.Point(42, 467);
             this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.Size = new System.Drawing.Size(827, 150);
+            this.dataGridView3.Size = new System.Drawing.Size(839, 150);
             this.dataGridView3.TabIndex = 10;
             // 
             // button1
@@ -223,12 +224,25 @@
             this.botonVolver.UseVisualStyleBackColor = false;
             this.botonVolver.Click += new System.EventHandler(this.botonVolver_Click);
             // 
+            // Actualizar
+            // 
+            this.Actualizar.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.Actualizar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Actualizar.Location = new System.Drawing.Point(407, 639);
+            this.Actualizar.Name = "Actualizar";
+            this.Actualizar.Size = new System.Drawing.Size(134, 32);
+            this.Actualizar.TabIndex = 24;
+            this.Actualizar.Text = "Actualizar";
+            this.Actualizar.UseVisualStyleBackColor = false;
+            this.Actualizar.Click += new System.EventHandler(this.Actualizar_Click);
+            // 
             // ventanaConsultarDatos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(922, 683);
+            this.Controls.Add(this.Actualizar);
             this.Controls.Add(this.botonVolver);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label7);
@@ -275,6 +289,7 @@
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button botonVolver;
+        private System.Windows.Forms.Button Actualizar;
 
     }
 }

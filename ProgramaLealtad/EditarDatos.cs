@@ -19,6 +19,32 @@ namespace ProgramaLealtad
         public ventanaEditarDatos()
         {
             InitializeComponent();
+            /*
+            for (int i = 1; i < 32; i++)
+            {
+                Variables.baseDatos.ejecutarConsulta("Insert into Restaurante(Nombre,NombreF,Telefono) values ('nombre 1." + i.ToString() + "','franquicia 1'," + i.ToString() + ")");
+            }
+            for (int i = 1; i < 6; i++)
+            {
+                Variables.baseDatos.ejecutarConsulta("Insert into Restaurante(Nombre,NombreF,Telefono) values ('nombre 3." + i.ToString() + "','franquicia 3'," + i.ToString() + ")");
+            }
+            for (int i = 1; i < 2; i++)
+            {
+                Variables.baseDatos.ejecutarConsulta("Insert into Restaurante(Nombre,NombreF,Telefono) values ('nombre 4." + i.ToString() + "','franquicia 4'," + i.ToString() + ")");
+            }
+            for (int i = 1; i < 14; i++)
+            {
+                Variables.baseDatos.ejecutarConsulta("Insert into Restaurante(Nombre,NombreF,Telefono) values ('nombre 2.1." + i.ToString() + "','franquicia 2.1'," + i.ToString() + ")");
+            }
+            for (int i = 1; i < 8; i++)
+            {
+                Variables.baseDatos.ejecutarConsulta("Insert into Restaurante(Nombre,NombreF,Telefono) values ('nombre 2.2." + i.ToString() + "','franquicia 2.2'," + i.ToString() + ")");
+            }
+            for (int i = 1; i < 4; i++)
+            {
+                Variables.baseDatos.ejecutarConsulta("Insert into Restaurante(Nombre,NombreF,Telefono) values ('nombre 2.3." + i.ToString() + "','franquicia 2.3'," + i.ToString() + ")");
+            }
+             */
             llenarTabla("Select * From Dueno", dataGridView1);
             llenarTabla("Select  NombreF as 'Nombre', NumeroF as 'Numero' From Franquicia", dataGridView2);
             llenarTabla("Select NombreSF as 'Nombre', NumeroSF as 'Numero', NombreF as 'Nombre de Franquicia' From SubFranquicia", dataGridView3);

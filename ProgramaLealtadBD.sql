@@ -1,5 +1,5 @@
---Use DB_Grupo5;
-Use ProgramaDeLealtad;
+Use DB_Grupo5;
+--Use ProgramaDeLealtad;
 
 /*
 Drop table Dueno
@@ -16,6 +16,7 @@ drop procedure CalculaDerivados
 drop trigger Recalcula1
 drop trigger Recalcula2
 drop trigger Recalcula3
+drop trigger Recalcula4
 */
 
 
@@ -66,10 +67,10 @@ create table datosDeRestaurante (
 
 Mes varchar(3),
 Anno int,
-ClientesQueVuelven int,
+ClientesQueVuelven float,
 PorcentajeNuevosClientes float,
-NuveosClientes int,
-ClientesQueVuelvenDespuesDeLaPrimeraCompra int,
+NuveosClientes float,
+ClientesQueVuelvenDespuesDeLaPrimeraCompra float,
 NombreRestaurante varchar(30),
 
 Primary key(NombreRestaurante,Mes, Anno),
@@ -81,11 +82,11 @@ create table Transacciones (
 
 Ano int,
 Mes varchar(3),
-Cantidad int,
-Monto int,
+Cantidad float,
+Monto float,
 Nombre varchar(30),
 
-primary key (Ano, Mes),
+primary key (Ano, Mes,Nombre),
 foreign key (Nombre) references Restaurante(Nombre),
 
 )
@@ -96,22 +97,20 @@ Ano int,
 Mes varchar(3), 
 Nombre varchar(30),
 
-primary key (Ano, Mes),
-foreign key (Ano, Mes) references Transacciones (Ano, Mes),
-foreign key (Nombre) references Restaurante(Nombre),
+primary key (Ano, Mes,Nombre),
+foreign key (Ano, Mes,Nombre) references Transacciones (Ano, Mes,Nombre),
 )
 
 create table TransaccionesDeClientesDeLealtad (
 
 Ano int,
 Mes varchar(3), 
-CantidadDeTransaccionesClientesDeLealtad int,
-MontoDeClientesDeLealtad int,
+CantidadDeTransaccionesClientesDeLealtad float,
+MontoDeClientesDeLealtad float,
 Nombre varchar(30),
 
-primary key (Ano, Mes),
-foreign key (Ano, Mes) references Transacciones (Ano, Mes),
-foreign key (Nombre) references Restaurante(Nombre),
+primary key (Ano, Mes,Nombre),
+foreign key (Ano, Mes,Nombre) references Transacciones (Ano, Mes,Nombre),
 )
 
 create table PerteneceF (
@@ -135,27 +134,38 @@ foreign key (Cedula) references Dueno (Cedula)
 
 )
 
+drop procedure CalculaDerivados
+
 go
 Create Procedure CalculaDerivados
-	@Mes int, @Ano int, @Restaruante varchar(30)
+	@Mes varchar(3), @Ano int, @Restaruante varchar(30)
 as
 	declare @chequeoLealtad float,
 	@cantidadTN float,
 	@montoTN float
 
-	select @cantidadTN = T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad,
-		   @montoTN = T.Monto - TL.MontoDeClientesDeLealtad,
-		   @chequeoLealtad = cast(TL.MontoDeClientesDeLealtad as decimal) / TL.CantidadDeTransaccionesClientesDeLealtad
+	select @cantidadTN = cast(T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad as float),
+		   @montoTN = cast(T.Monto - TL.MontoDeClientesDeLealtad as float),
+		   @chequeoLealtad = cast(TL.MontoDeClientesDeLealtad / TL.CantidadDeTransaccionesClientesDeLealtad as float)
 	from Transacciones T, TransaccionesDeClientesDeLealtad TL
-	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano and Nombre = @Restaruante
+	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano and T.Nombre = @Restaruante
 
-	select T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad as 'Cantidad Transacciones Normales',
+	print @cantidadTN
+	print  @montoTN
+	print @chequeoLealtad
+
+	select T.Cantidad as 'Cantidad de Transacciones Totales',
+		   T.Monto as 'Monto Total de Transacciones',
+		   TL.CantidadDeTransaccionesClientesDeLealtad as 'Cantidad Transacciones Lealtad',
+		   TL.MontoDeClientesDeLealtad as 'Monto Transacciones Lealtad',
+		   TL.MontoDeClientesDeLealtad / TL.CantidadDeTransaccionesClientesDeLealtad as 'Chequeo Lealtad',
+		   T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad as 'Cantidad Transacciones Normales',
 		   T.Monto - TL.MontoDeClientesDeLealtad as 'Monto Transacciones Normales',
-		   cast(TL.MontoDeClientesDeLealtad as decimal) / TL.CantidadDeTransaccionesClientesDeLealtad as 'Chequeo Lealtad',
-		   @montoTN / @cantidadTN  as 'Chequeo Normal',
-		   (@chequeoLealtad - (@montoTN / @cantidadTN))/(@montoTN / @cantidadTN) as '%Lift'
+		   cast(@montoTN / @cantidadTN as float) as 'Chequeo Normal',
+		   cast((@chequeoLealtad - (@montoTN / @cantidadTN)/(@montoTN / @cantidadTN))as float) as '%Lift'
 	from Transacciones T, TransaccionesDeClientesDeLealtad TL
-	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano  and Nombre = @Restaruante
+	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano  and T.Nombre = @Restaruante and TL.Nombre = @Restaruante
+
 
 go
 create trigger Recalcula1
@@ -211,20 +221,10 @@ end
 close cursor1
 deallocate cursor1
 
-go
-create trigger Recalcula4
-on TransaccionesDeClientesNormales after update
-as
-declare @Mes int, @Año int, @Nombre varchar(30)
-declare cursor1 cursor for
-	select Mes, Ano, Nombre
-	from inserted
-	where Ano > 0 and Mes > 0 and Nombre != null
-open cursor1
-fetch next from cursor1 into @Mes, @Año, @Nombre
-while @@FETCH_STATUS = 0 begin
-	Exec CalculaDerivados @Mes,@Año,@Nombre --Ejecuta la consulta que calcula los derivados
-	fetch next from cursor1 into @Mes, @Año, @Nombre
-end
-close cursor1
-deallocate cursor1
+DELETE FROM Restaurante
+
+delete from datosDeRestaurante
+delete from TransaccionesDeClientesDeLealtad
+delete from Transacciones
+
+exec CalculaDerivados 1,2015,'nombre 1.20'
