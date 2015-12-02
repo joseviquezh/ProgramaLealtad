@@ -134,38 +134,22 @@ foreign key (Cedula) references Dueno (Cedula)
 
 )
 
-drop procedure CalculaDerivados
-
 go
 Create Procedure CalculaDerivados
 	@Mes varchar(3), @Ano int, @Restaruante varchar(30)
 as
-	declare @chequeoLealtad float,
-	@cantidadTN float,
-	@montoTN float
 
-	select @cantidadTN = cast(T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad as float),
-		   @montoTN = cast(T.Monto - TL.MontoDeClientesDeLealtad as float),
-		   @chequeoLealtad = cast(TL.MontoDeClientesDeLealtad / TL.CantidadDeTransaccionesClientesDeLealtad as float)
-	from Transacciones T, TransaccionesDeClientesDeLealtad TL
-	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano and T.Nombre = @Restaruante
-
-	print @cantidadTN
-	print  @montoTN
-	print @chequeoLealtad
-
-	select T.Cantidad as 'Cantidad de Transacciones Totales',
-		   T.Monto as 'Monto Total de Transacciones',
-		   TL.CantidadDeTransaccionesClientesDeLealtad as 'Cantidad Transacciones Lealtad',
-		   TL.MontoDeClientesDeLealtad as 'Monto Transacciones Lealtad',
+	select cast( T.Cantidad as decimal) as 'Cantidad de Transacciones Totales',
+		   cast( T.Monto as decimal) as 'Monto Total de Transacciones',
+		   cast( TL.CantidadDeTransaccionesClientesDeLealtad as decimal) as 'Cantidad Transacciones Lealtad',
+		   cast( TL.MontoDeClientesDeLealtad as decimal) as 'Monto Transacciones Lealtad',
 		   TL.MontoDeClientesDeLealtad / TL.CantidadDeTransaccionesClientesDeLealtad as 'Chequeo Lealtad',
-		   T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad as 'Cantidad Transacciones Normales',
-		   T.Monto - TL.MontoDeClientesDeLealtad as 'Monto Transacciones Normales',
-		   cast(@montoTN / @cantidadTN as float) as 'Chequeo Normal',
-		   cast((@chequeoLealtad - (@montoTN / @cantidadTN)/(@montoTN / @cantidadTN))as float) as '%Lift'
+		   cast( T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad as decimal) as 'Cantidad Transacciones Normales',
+		   cast( T.Monto - TL.MontoDeClientesDeLealtad as decimal) as 'Monto Transacciones Normales',
+		   ((T.Monto - TL.MontoDeClientesDeLealtad)/ (T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad)) as 'Chequeo Normal',		   
+		   ((TL.MontoDeClientesDeLealtad / TL.CantidadDeTransaccionesClientesDeLealtad)-((T.Monto - TL.MontoDeClientesDeLealtad)/ (T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad))) / (((T.Monto - TL.MontoDeClientesDeLealtad)/ (T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad)))*100 as '%Lift'
 	from Transacciones T, TransaccionesDeClientesDeLealtad TL
 	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano  and T.Nombre = @Restaruante and TL.Nombre = @Restaruante
-
 
 go
 create trigger Recalcula1
@@ -221,10 +205,6 @@ end
 close cursor1
 deallocate cursor1
 
-DELETE FROM Restaurante
-
 delete from datosDeRestaurante
 delete from TransaccionesDeClientesDeLealtad
 delete from Transacciones
-
-exec CalculaDerivados 1,2015,'nombre 1.20'

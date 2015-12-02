@@ -1,0 +1,13 @@
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\bin\x86\hhh\ProgramaLealtad.exe
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.GenerarReporte.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.ventanaPrincipal.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.ventanaConsultarDatos.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.ventanaEditarDatos.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.VentanaAgregarRestaurante.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.VentanaAgregarSubfranquicia.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.ventanaAgregarDueño.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.ventanaImportarDatos.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.VentanaAgregarFranquicia.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.Properties.Resources.resources
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.csproj.GenerateResource.Cache
+C:\Users\b37638\Desktop\ProgramaLealtad\ProgramaLealtad\obj\x86\hhh\ProgramaLealtad.exe

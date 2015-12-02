@@ -53,7 +53,6 @@ namespace ProgramaLealtad
             }
 
 
-
             double d = double.Parse( ds.Tables[0].Rows[67].ItemArray[1].ToString() );
             DateTime conv = DateTime.FromOADate(d);
             string fecha = conv.ToString();
@@ -85,7 +84,7 @@ namespace ProgramaLealtad
                 }
                 ++i;
             }
-           
+
             for ( i = 1; i <= ds.Tables[0].Rows.Count - 3; i++)
             {
                 string nombre = ds.Tables[0].Rows[i].ItemArray[0].ToString();
@@ -98,6 +97,7 @@ namespace ProgramaLealtad
                 }
             }
 
+            MessageBox.Show("Datos importados exitosamente");
             this.Close();
         }
 
