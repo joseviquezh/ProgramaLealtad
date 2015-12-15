@@ -44,7 +44,7 @@ namespace ProgramaLealtad
             {
                 Variables.baseDatos.ejecutarConsulta("Insert into Restaurante(Nombre,NombreF,Telefono) values ('nombre 2.3." + i.ToString() + "','franquicia 2.3'," + i.ToString() + ")");
             }
-             */
+            /**/
             llenarTabla("Select * From Dueno", dataGridView1);
             llenarTabla("Select  NombreF as 'Nombre', NumeroF as 'Numero' From Franquicia", dataGridView2);
             llenarTabla("Select NombreSF as 'Nombre', NumeroSF as 'Numero', NombreF as 'Nombre de Franquicia' From SubFranquicia", dataGridView3);
@@ -143,7 +143,7 @@ namespace ProgramaLealtad
                     string cedula = (string)dataGridView1.Rows[i].Cells[0].Value;
                     Variables.baseDatos.ejecutarConsulta("update Dueno set Nombre = '" + (string)dataGridView1.Rows[i].Cells[1].Value + "', Telefono = '" + (string)dataGridView1.Rows[i].Cells[2].Value + "' where Cedula = '" + cedula + "'");
                 }
-                MessageBox.Show("Datos Actulizados Correctamente");
+                MessageBox.Show("Datos Actualizados Correctamente");
             }
             catch (SqlException ex)
             {

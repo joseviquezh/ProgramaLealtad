@@ -23,5 +23,6 @@ namespace ProgramaLealtad
 
     class Variables{
         public static AccesoBaseDatos baseDatos =  new AccesoBaseDatos();
+        public static bool importar = false;
     }
 }

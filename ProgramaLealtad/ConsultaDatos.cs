@@ -96,6 +96,7 @@ namespace ProgramaLealtad
             {
                 MessageBox.Show("Datos	vacio");
             }
+ 
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) //Franquicia
@@ -157,13 +158,18 @@ namespace ProgramaLealtad
                     Variables.baseDatos.ejecutarConsulta("update TransaccionesDeClientesDeLealtad set CantidadDeTransaccionesClientesDeLealtad = " + Convert.ToInt32(dataGridView3.Rows[i].Cells[2].Value) + ", MontoDeClientesDeLealtad = " + Convert.ToInt32(dataGridView3.Rows[i].Cells[3].Value) + " where Nombre = '" + (string)comboBox2.SelectedItem + "' and Ano = " + Convert.ToInt32(comboBox3.SelectedItem) + " and Mes = " + Convert.ToInt32(comboBox4.SelectedItem));
                     llenarTabla("Exec CalculaDerivados " + Convert.ToInt32(comboBox4.SelectedItem) + "," + Convert.ToInt32(comboBox3.SelectedItem) + ", '" + (string)comboBox2.SelectedItem + "'", dataGridView3);                
                 }
-                MessageBox.Show("Datos Actulizados Correctamente");
+                MessageBox.Show("Datos Actualizados Correctamente");
             }
             catch (SqlException ex)
             {
                 string mensajeError = ex.ToString();
                 MessageBox.Show(mensajeError);
             }
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

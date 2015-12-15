@@ -46,6 +46,11 @@ namespace ProgramaLealtad
                 string mensajeError = ex.ToString();
                 MessageBox.Show(mensajeError);
             }
+            if(Variables.importar)
+            {
+                sqlConnection.Close();
+            }
+            //sqlConnection.Close();
             return datos;
         }
 

@@ -1,5 +1,4 @@
 Use DB_Grupo5;
---Use ProgramaDeLealtad;
 
 /*
 Drop table Dueno
@@ -16,7 +15,13 @@ drop procedure CalculaDerivados
 drop trigger Recalcula1
 drop trigger Recalcula2
 drop trigger Recalcula3
-drop trigger Recalcula4
+
+delete from Restaurante
+delete from Franquicia
+
+delete from datosDeRestaurante
+delete from TransaccionesDeClientesDeLealtad
+delete from Transacciones
 */
 
 
@@ -24,7 +29,7 @@ create table Dueno (
 
 Cedula varchar(20),
 Nombre varchar(30),
-Telefono varchar(20),
+Telefono varchar(20) default '506',
 
 primary key (Cedula)
 )
@@ -54,11 +59,11 @@ create table Restaurante (
 
 Nombre varchar(30),
 Telefono varchar(20),
-NombreF		varchar(30),
-NombreSF	varchar(30) null,
+NombreF	varchar(30),
+NombreSF varchar(30) null,
 
 primary key (Nombre),
-foreign key (NombreF) references Franquicia(NombreF),
+foreign key (NombreF) references Franquicia(NombreF) on delete cascade,
 foreign key (NombreSF) references SubFranquicia(NombreSF) on delete set default
 
 )
@@ -74,8 +79,8 @@ ClientesQueVuelvenDespuesDeLaPrimeraCompra float,
 NombreRestaurante varchar(30),
 
 Primary key(NombreRestaurante,Mes, Anno),
-Foreign Key (NombreRestaurante) references Restaurante(Nombre)
-
+Foreign Key (NombreRestaurante) references Restaurante(Nombre) on delete no action,
+check(Mes != '000' and Mes != '013')--check (Anno > 0)
 )
 
 create table Transacciones (
@@ -120,7 +125,7 @@ Cedula varchar (20),
 
 primary key (NombreF, Cedula),
 foreign key (NombreF) references Franquicia(NombreF),
-foreign key (Cedula) references Dueno (Cedula)
+foreign key (Cedula) references Dueno (Cedula) on update cascade
 )
 
 create table PerteneceSF (
@@ -148,8 +153,8 @@ as
 		   cast( T.Monto - TL.MontoDeClientesDeLealtad as decimal) as 'Monto Transacciones Normales',
 		   ((T.Monto - TL.MontoDeClientesDeLealtad)/ (T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad)) as 'Chequeo Normal',		   
 		   ((TL.MontoDeClientesDeLealtad / TL.CantidadDeTransaccionesClientesDeLealtad)-((T.Monto - TL.MontoDeClientesDeLealtad)/ (T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad))) / (((T.Monto - TL.MontoDeClientesDeLealtad)/ (T.Cantidad - TL.CantidadDeTransaccionesClientesDeLealtad)))*100 as '%Lift'
-	from Transacciones T, TransaccionesDeClientesDeLealtad TL
-	where T.Mes = @Mes and T.Ano = @Ano and TL.Mes = @Mes and TL.Ano = @Ano  and T.Nombre = @Restaruante and TL.Nombre = @Restaruante
+	from Transacciones T join TransaccionesDeClientesDeLealtad TL on T.Ano = TL.Ano and T.Mes = TL.Mes and T.Nombre = TL.Nombre
+	where T.Mes = @Mes and T.Ano = @Ano and T.Nombre = @Restaruante
 
 go
 create trigger Recalcula1
@@ -205,6 +210,10 @@ end
 close cursor1
 deallocate cursor1
 
-delete from datosDeRestaurante
-delete from TransaccionesDeClientesDeLealtad
-delete from Transacciones
+
+delete from Restaurante
+where Nombre = 'Nombre 6'
+
+
+insert into Restaurante(Nombre,Telefono)
+values ('Nombre 6',5555)

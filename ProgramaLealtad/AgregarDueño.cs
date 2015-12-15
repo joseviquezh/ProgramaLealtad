@@ -29,7 +29,16 @@ namespace ProgramaLealtad
         private void VentanaAgregarDueno_Click(object sender, EventArgs e)
         {
             string insercionSQL = "Insert into Dueno";
-            insercionSQL += " values('" + this.textBoxCédulaDueño.Text + "', '" + this.textBoxNombreDueño.Text + "',  '" + this.textBoxTelefonoDueño.Text + "')";
+
+            if ( this.textBoxTelefonoDueño.Text == string.Empty )
+            {
+                insercionSQL += "(Cedula, Nombre) values('" + this.textBoxCédulaDueño.Text + "', '" + this.textBoxNombreDueño.Text + "')";
+            }
+            else
+            {
+                insercionSQL += "(Cedula, Nombre, Telefono) values('" + this.textBoxCédulaDueño.Text + "', '" + this.textBoxNombreDueño.Text + "',  '" + this.textBoxTelefonoDueño.Text + "')";
+            }
+           
             try
             {
                 Variables.baseDatos.ejecutarInsercionTabla(insercionSQL);

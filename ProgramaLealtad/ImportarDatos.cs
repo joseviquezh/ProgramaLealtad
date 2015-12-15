@@ -38,8 +38,10 @@ namespace ProgramaLealtad
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            Variables.importar = true;
             DataSet ds = new DataSet();
+
+            Cursor.Current = Cursors.WaitCursor;
 
             // using (OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\\Users\\luis diego\\Desktop\\Bases I\\BD.xlsx;Extended Properties=\Excel 12.0"/* Xml; HDR = YES; IMEX = 1; TypeGuessRows = 0; ImportMixedTypes = Text*/))
             using (OleDbConnection connection = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + direccion + ";Extended Properties=\"Excel 12.0 Xml;HDR=YES;IMEX=1\";"))
@@ -90,14 +92,16 @@ namespace ProgramaLealtad
                 string nombre = ds.Tables[0].Rows[i].ItemArray[0].ToString();
                 if (!nombre.Equals("franquicia 1", StringComparison.Ordinal) && !nombre.Equals("franquicia 2.1", StringComparison.Ordinal) && !nombre.Equals("franquicia 2.2", StringComparison.Ordinal) && !nombre.Equals("franquicia 2.3", StringComparison.Ordinal) && !nombre.Equals("franquicia 3", StringComparison.Ordinal) && !nombre.Equals("franquicia 4", StringComparison.Ordinal) )
                 {
-                    //MessageBox.Show(nombre);
                     Variables.baseDatos.ejecutarConsulta("Insert into datosDeRestaurante(NombreRestaurante,Anno,Mes,NuveosClientes,PorcentajeNuevosClientes,ClientesQueVuelven,ClientesQueVuelvenDespuesDeLaPrimeraCompra) values('" + nombre + "'," + año + ",'" + mes + "'," + ds.Tables[0].Rows[i].ItemArray[6] + "," + ds.Tables[0].Rows[i].ItemArray[7] + "," + ds.Tables[0].Rows[i].ItemArray[8] + "," + ds.Tables[0].Rows[i].ItemArray[9] + ");");
                     Variables.baseDatos.ejecutarConsulta("Insert into Transacciones(Nombre,Ano,Mes,Cantidad,Monto) values('" + nombre + "'," + año + ",'" + mes + "'," + ds.Tables[0].Rows[i].ItemArray[1] + "," + ds.Tables[0].Rows[i].ItemArray[2] + ");");
                     Variables.baseDatos.ejecutarConsulta("Insert into TransaccionesDeClientesDeLealtad(Nombre,Ano,Mes,CantidadDeTransaccionesClientesDeLealtad,MontoDeClientesDeLealtad) values('" + nombre + "'," + año + ",'" + mes + "'," + ds.Tables[0].Rows[i].ItemArray[3] + "," + ds.Tables[0].Rows[i].ItemArray[4] + ");");
+                                    
                 }
             }
 
             MessageBox.Show("Datos importados exitosamente");
+            Cursor.Current = Cursors.Default;
+            Variables.importar = false;
             this.Close();
         }
 
